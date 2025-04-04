@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Massive Announcement!</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Oiii cutie! tumhare liye kuch banaye hai</h1>
+      <h3>pyaara sa chotu sa surprise, just like me🎀</h3>
+    </div>
+    <div class="options">
+      <button id="hug-btn">Want a virtual hug?</button>
+      <button id="talk-btn">Sab kuch bol do</button>
+      <button id="explore-btn">Some msgs</button>
+      <button id="surprise-btn">Surprise!</button>
+    </div>
+    <div id="hug-animation" class="hidden">
+      <div class="character left"></div>
+      <div class="character right"></div>
+      <span id="hug-emoji">🐼</span>
+    </div>
+    <div id="talk-section" class="hidden">
+      <form id="response-form">
+        <textarea id="response-text" placeholder="Type your feelings here..."></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+    <div id="explore-section" class="hidden">
+      <div class="flower" data-message="Miss you yaar🫠"></div>
+      <div class="flower" data-message="Prblms share krte hai"></div>
+      <div class="flower" data-message="Everything will be okay❣️"></div>
+      <div class="flower" data-message="meri pyaari si paanda🐨"></div>
+      <div class="flower" data-message="saath mehnat krege👊🏻"></div>
+    </div>
+    <div id="message-area" class="hidden"></div>
+  </div>
+  <div id="horror-overlay" class="hidden">
+    <div class="horror-content">
+      <h2 id="horror-message"></h2>
+      <button id="back-btn">Back to normal</button>
+    </div>
+    <div class="ghost"></div>
+    <div class="ghost"></div>
+    <div class="ghost"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

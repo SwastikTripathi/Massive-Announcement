@@ -1,0 +1,294 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #f0e6f6;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    overflow: hidden; /* Prevents scrolling during animations */
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .options button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #ffcccb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .options button:hover {
+    transform: scale(1.1);
+  }
+  
+  .hidden {
+    display: none !important; /* Added !important to ensure it overrides any conflicting styles */
+  }
+  
+  /* Hug Animation */
+  #hug-animation {
+    position: relative;
+    height: 200px;
+  }
+  
+  .character {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ffb6c1;
+    top: 50px;
+  }
+  
+  .character.left {
+    left: 100px;
+    animation: hug-left 2s forwards;
+  }
+  
+  .character.right {
+    right: 100px;
+    animation: hug-right 2s forwards;
+  }
+  
+  @keyframes hug-left {
+    0% { left: 100px; }
+    100% { left: 250px; }
+  }
+  
+  @keyframes hug-right {
+    0% { right: 100px; }
+    100% { right: 250px; }
+  }
+  
+  #hug-emoji {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Explore Section - Flowers */
+  #explore-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .flower {
+    width: 50px;
+    height: 50px;
+    background-color: #98fb98;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+  }
+  
+  .flower.clicked {
+    background-color: #ff69b4;
+    animation: bloom 1s forwards;
+  }
+  
+  .flower::after {
+    content: attr(data-message);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: none;
+    font-size: 0.9em;
+  }
+  
+  .flower.clicked::after {
+    display: block;
+  }
+  
+  @keyframes bloom {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Heart Confetti */
+  .heart {
+    position: fixed;
+    width: var(--heart-size, 20px);
+    height: var(--heart-size, 20px);
+    background-color: var(--heart-color, red);
+    transform: rotate(45deg);
+    opacity: 1;
+    transition: all 1s ease-out;
+  }
+  
+  .heart::before, .heart::after {
+    content: '';
+    position: absolute;
+    width: var(--heart-size, 20px);
+    height: var(--heart-size, 20px);
+    background-color: var(--heart-color, red);
+    border-radius: 50%;
+  }
+  
+  .heart::before {
+    left: calc(-0.5 * var(--heart-size, 20px));
+  }
+  
+  .heart::after {
+    top: calc(-0.5 * var(--heart-size, 20px));
+  }
+  
+  /* Talk Section - Form */
+  #talk-section textarea {
+    width: 80%;
+    max-width: 400px;
+    height: 100px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 2px solid #ffcccb;
+    border-radius: 5px;
+  }
+  
+  #talk-section button {
+    padding: 10px 20px;
+    background-color: #98fb98;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Message Area */
+  #message-area {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Horror Overlay */
+  #horror-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* Changed from rgba(0, 0, 0, 0.8) to solid black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .horror-content {
+    text-align: center;
+    color: #ffcccb; /* Light pink for cuteness */
+  }
+  
+  #horror-message {
+    font-size: 2em;
+    margin-bottom: 20px;
+    animation: shake 1s infinite; /* Changed from 0.5s to 1s for slower oscillation */
+  }
+  
+  /* Update the keyframes to match */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  
+  .ghost {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ffb6c1; /* Pastel pink */
+    border-radius: 50% 50% 0 0;
+    animation: float 3s ease-in-out infinite;
+    cursor: pointer; /* Indicates clickability */
+    transition: transform 0.2s ease; /* Smooth scaling transition */
+  }
+
+  .ghost:hover {
+    transform: scale(1.1); /* Scales up by 10% on hover */
+  }
+  
+  .ghost::before, .ghost::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 20px;
+  }
+  .ghost::before {
+    left: 15px;
+  }
+  
+  .ghost::after {
+    right: 15px;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  #back-btn {
+    padding: 10px 20px;
+    background-color: #98fb98;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  /* Fade-in Animation */
+  .fade-in {
+    animation: fadeIn 0.5s;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+    .character {
+      width: 80px;
+      height: 80px;
+    }
+    #hug-animation {
+      height: 150px;
+    }
+  }
